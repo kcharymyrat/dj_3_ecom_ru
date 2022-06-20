@@ -131,7 +131,7 @@ class CartProduct(models.Model):
     final_price = models.DecimalField(max_digits=9, decimal_places=2)
 
     def __str__(self):
-        return f"Products (for cart): {self.product.title}"
+        return f"Products (for cart): {self.content_object.title}"
 
     class Meta:
         indexes = [models.Index(fields=["content_type", "object_id"])]
@@ -148,8 +148,8 @@ class Cart(models.Model):
     in_order = models.BooleanField(default=False)
     for_annonymous_user = models.BooleanField(default=False)
 
-    def __str__(self) -> str:
-        return self.id
+    def __str__(self):
+        return f"{self.id}"
 
 
 class Customer(models.Model):
