@@ -1,7 +1,29 @@
 {% extends 'base.html' %}
 
+{% load specifications %}
+
 {% block title %}{{ block.super }} | Details {% endblock title %}
 
 {% block content %}
-    {{ product.title }}
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">{{product.category.name}}</a></li>
+        <li>{{product.title}}</li>
+    </ul>
+</nav>
+
+<div>
+    <img src="{{product.image.url}}" alt="product image">
+</div>
+<div>
+    <h3>{{ product.title }}</h3>
+    <p>Price: $ {{product.price}}</p>
+    <p>Desciption: {{product.description}}</p>
+</div>
+<div>
+    <p>Specifications: </p>
+    {{product|product_spec}}
+</div>
+ 
 {% endblock content %}

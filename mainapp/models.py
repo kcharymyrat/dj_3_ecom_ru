@@ -145,6 +145,8 @@ class Cart(models.Model):
     )
     total_products = models.PositiveIntegerField(default=0)
     final_price = models.DecimalField(max_digits=9, decimal_places=2)
+    in_order = models.BooleanField(default=False)
+    for_annonymous_user = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.id
