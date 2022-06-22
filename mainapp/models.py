@@ -103,7 +103,9 @@ class Smartphone(Product):
     accum_volume = models.CharField(max_length=255, verbose_name="Battery volume")
     ram = models.CharField(max_length=255)
     sd = models.BooleanField(default=True)
-    sd_volume_max = models.CharField(max_length=255, verbose_name="Max SD volume")
+    sd_volume_max = models.CharField(
+        max_length=255, verbose_name="Max SD volume", null=True, blank=True
+    )
     main_cam_mp = models.CharField(max_length=255, verbose_name="Main camera")
     frontal_cam_mp = models.CharField(max_length=255, verbose_name="Frontal camera")
 
@@ -112,6 +114,12 @@ class Smartphone(Product):
 
     def get_absolute_url(self):
         return get_product_url(self, "product_detail")
+
+    # @property
+    # def sd(self):
+    #     if self.sd:
+    #         return "Yes"
+    #     return "No"
 
 
 class CartProduct(models.Model):
